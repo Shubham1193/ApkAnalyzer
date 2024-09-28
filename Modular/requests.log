@@ -9,3 +9,35 @@ Headers:
 	Content-Length: 52
 Body: SMSText=%2B9449334323-When_will_you_reach_home_honey
 
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://www.google.com/gen_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: www.google.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://www.google.com/gen_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: www.google.com
+	Accept-Encoding: gzip
+Body: 
+

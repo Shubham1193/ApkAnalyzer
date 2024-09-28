@@ -23,11 +23,15 @@ class APKAnalyzerGUI:
         main_label = tk.Label(self.main_frame, text="APK Analyzer", font=("Arial", 18))
         main_label.pack(pady=30)
 
-        static_button = tk.Button(self.main_frame, text="Static Analysis", command=self.show_static_analysis, font=("Arial", 14))
-        static_button.pack(pady=10)
+        button_frame = tk.Frame(self.main_frame)
+        button_frame.pack(pady=10)
 
-        dynamic_button = tk.Button(self.main_frame, text="Dynamic Analysis", command=self.show_dynamic_analysis, font=("Arial", 14))
-        dynamic_button.pack(pady=10)
+        # Create buttons with fixed width, placed in the button frame
+        static_button = tk.Button(button_frame, text="Static Analysis", command=self.show_static_analysis, font=("Arial", 14), width=20)
+        static_button.grid(row=0, column=0, padx=10)  # Place button using grid
+
+        dynamic_button = tk.Button(button_frame, text="Dynamic Analysis", command=self.show_dynamic_analysis, font=("Arial", 14), width=20)
+        dynamic_button.grid(row=0, column=1, padx=10)  # Place button side by side using grid
 
     def show_static_analysis(self):
         self.clear_frame()
@@ -60,10 +64,10 @@ class APKAnalyzerGUI:
         self.app_info_entry = tk.Entry(input_frame)
         self.app_info_entry.pack(side=tk.LEFT)
 
-        analyze_button = tk.Button(self.main_frame, text="Analyze", command=self.on_analyze)
+        analyze_button = tk.Button(self.main_frame, text="Analyze", command=self.on_analyze, font=("Arial", 14), width=20)
         analyze_button.pack(pady=10)
 
-        back_button = tk.Button(self.main_frame, text="Back", command=self.show_initial_page)
+        back_button = tk.Button(self.main_frame, text="Back", command=self.show_initial_page, font=("Arial", 14), width=10)
         back_button.pack(pady=10)
 
         self.result_text = scrolledtext.ScrolledText(self.main_frame, width=200, height=100, font=("Arial", 16), padx=10, pady=10)
@@ -89,16 +93,21 @@ class APKAnalyzerGUI:
         info_label = tk.Label(self.main_frame, text="Test the following data steal", font=("Arial", 14))
         info_label.pack(pady=10)
 
-        message_button = tk.Button(self.main_frame, text="Message", command=self.handle_message)
-        message_button.pack(pady=10)
+        button_frame = tk.Frame(self.main_frame)
+        button_frame.pack(pady=10)
 
-        audio_button = tk.Button(self.main_frame, text="Other Audio", command=self.handle_audio)
-        audio_button.pack(pady=10)
+        # Create buttons with fixed width, placed in the button frame
 
-        file_button = tk.Button(self.main_frame, text="File", command=self.handle_file)
-        file_button.pack(pady=10)
+        message_button = tk.Button(button_frame, text="Message", command=self.handle_message, font=("Arial", 14), width=20)
+        message_button.grid(row=0, column=0, padx=10)
 
-        back_button = tk.Button(self.main_frame, text="Back", command=self.show_initial_page)
+        audio_button = tk.Button(button_frame, text="Other Audio", command=self.handle_audio, font=("Arial", 14), width=20)
+        audio_button.grid(row=0, column=1, padx=10)
+
+        file_button = tk.Button(button_frame, text="File", command=self.handle_file, font=("Arial", 14), width=20)
+        file_button.grid(row=0, column=2, padx=10)
+
+        back_button = tk.Button(self.main_frame, text="Back", command=self.show_initial_page, font=("Arial", 14), width=10)
         back_button.pack(pady=10)
 
         self.result_text_dynamic = scrolledtext.ScrolledText(self.main_frame, width=200, height=100, font=("Arial", 16), padx=10, pady=10)
