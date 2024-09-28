@@ -1,11 +1,5 @@
 from mitmproxy import http
 
-def clearfile():
-    # Open the file in write mode to clear it (truncate)
-    with open("requests.log", "w"):
-        pass  # The file will be cleared; no need to write anything
-    
-clearfile()
 
 def request(flow: http.HTTPFlow) -> None:
     """
@@ -25,7 +19,6 @@ def request(flow: http.HTTPFlow) -> None:
         # Optionally, write the request body (be aware of large bodies)
         if len(flow.request.content) < 1024:  # Limit body size for safety
             logfile.write(f"Body: {flow.request.text}\n")
-            
 
         logfile.write("\n")  # Add a newline for better readability
 

